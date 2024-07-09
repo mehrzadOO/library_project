@@ -32,6 +32,8 @@ class App(ttk.Frame):
 
         self.register_btn = ttk.Button(self.master, text="Register", command=self.onclickregister).pack()
 
-
     def onclickregister(self):
-        add_human(self.name.get(), self.family.get(), self.username.get(), self.password.get())
+        res = add_human(self.name.get(), self.family.get(), self.username.get(), self.password.get())
+        self.master.destroy()
+        if res:
+            os.system(f"python main.py")

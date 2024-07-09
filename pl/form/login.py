@@ -1,4 +1,5 @@
 import os
+from bll.blbook_human import *
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
@@ -26,7 +27,10 @@ class App(ttk.Frame):
 
 
     def onclickseach(self):
-        pass
+        res = login(self.username.get(), self.password.get())
+        if res:
+            self.master.destroy()
+            os.system(f"python pl/form/libraryM.py")
 
     def onclicksignup(self):
         self.master.destroy()

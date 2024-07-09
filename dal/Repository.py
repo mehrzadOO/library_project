@@ -27,10 +27,10 @@ class Repository():
     def Read(self,obj):
         return session.query(obj).all()
 
-    def ReadById(self,obj,id):
-        return session.query(obj).filter(obj.hs_id==id).first()
+    def ReadById(self, obj, fil):
+        return session.query(obj).filter(obj.human_id == fil).first()
 
-    def Update(self,obj,id):
-        newObj=self.ReadById(obj,id)
-        newObj=obj
+    def Update(self, obj, id):
+        newObj = self.ReadById(obj, id)
+        newObj = obj
         session.commit()
