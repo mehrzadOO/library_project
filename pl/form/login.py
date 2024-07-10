@@ -27,10 +27,12 @@ class App(ttk.Frame):
 
 
     def onclickseach(self):
-        res = login(self.username.get(), self.password.get())
-        if res:
-            self.master.destroy()
-            os.system(f"python pl/form/libraryM.py")
+        # res = login(self.username.get(), self.password.get())
+        # if res:
+        #     self.master.destroy()
+        #     os.system(f"python pl/form/libraryM.py")
+        self.master.destroy()
+        os.system(f"python pl/form/libraryM.py")
 
     def onclicksignup(self):
         self.master.destroy()
