@@ -25,7 +25,7 @@ def login(username, password):
     for item in res:
         if item.human_username == username and item.human_password == password:
             messagebox.showinfo("welcome", "welcome to library.")
-            return True
+            return item.human_id
 
     if not check:
         messagebox.showerror("Error", "account not founded.")

@@ -17,6 +17,7 @@ class App(ttk.Frame):
         style = ttk.Style()
         style.theme_use("vista")
 
+        self.check_table = 0
         self.mb = ttk.Menubutton(self.master, text="Menu", padding=5)
         self.mb.place(x=910, y=0)
         self.mb.menu = Menu(self.mb, tearoff=0)
@@ -61,15 +62,30 @@ class App(ttk.Frame):
         self.table_book.place(x=0, y=0)
 
     def OnClickAddBook(self):
+        if self.check_table == 0:
+            self.AddBookInTable()
+            self.check_table += 1
         self.choose_book_frame.place_forget()
         self.add_Book_frame.place(x=0, y=0)
 
     def OnClickChooseBook(self):
+        if self.check_table == 0:
+            self.AddBookInTable()
+            self.check_table += 1
         self.add_Book_frame.place_forget()
         self.choose_book_frame.place(x=0, y=0)
 
     def OnClickAddBtn(self):
         res = AddBook(self.name_book.get(), self.genre_book.get(), self.author_book.get())
+        for item in self.table_book.get_children():
+            i = (str(item))
+            self.table_book.delete(i)
+        self.AddBookInTable()
         self.name_book.set("")
         self.author_book.set("")
         self.genre_book.set("")
+
+    def AddBookInTable(self):
+        list_books = AddBookInTable()
+        for book in list_books:
+            self.table_book.insert('', 'end', text="1", values=[book.book_id, book.book_name, book.book_author, book.book_genre, book.human_id])
